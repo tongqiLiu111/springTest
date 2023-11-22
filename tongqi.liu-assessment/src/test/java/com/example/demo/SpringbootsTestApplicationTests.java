@@ -34,7 +34,6 @@ class SpringbootsTestApplicationTests {
 	void getreverse() throws Exception{
 		mvc.perform(MockMvcRequestBuilders
 						.get("/reverse")
-				.accept(MediaType.APPLICATION_JSON_UTF8_VALUE)
 				.param("string","word"))
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().string("drow"))
@@ -47,8 +46,7 @@ class SpringbootsTestApplicationTests {
 
 		mvc.perform(MockMvcRequestBuilders
 						.get("/display")
-						.accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
-				.andExpect(MockMvcResultMatchers.status().isOk())
+				).andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().string("aDefaultMessage"))
 				.andDo(MockMvcResultHandlers.print());
 	}
